@@ -1,0 +1,23 @@
+{
+  "name": "cultsim-tooltip",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "main.js",
+  "dependencies": {
+    "fs-extra": "^9.0.0",
+    "json5": "^2.1.3",
+    "json5-validator": "^0.2.0",
+    "jsonic": "^0.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "author": "Mihael Stormrage",
+  "license": "MIT",
+  "description": "Cultist Simulator tooltip mod maker",
+  "repository": "github:mihael-stormrage/cultsim-tooltip"
+}
