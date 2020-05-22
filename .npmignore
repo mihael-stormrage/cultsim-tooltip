@@ -152,3 +152,4 @@ $RECYCLE.BIN/
 test.js
 .vscode
 .eslintrc.json
+package-lock.json
