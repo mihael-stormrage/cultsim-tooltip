@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { aspectString } from "./aspects_string.js"
 import { books, descr, descrLang } from "./filtered_data.js"
 import { file } from "./paths.js"

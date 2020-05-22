@@ -1,7 +1,7 @@
 {
   "name": "cultsim-tooltip",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "main": "main.js",
   "dependencies": {
     "fs-extra": "^9.0.0",
@@ -13,8 +13,11 @@
     "eslint": "^7.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test.js",
     "start": "node main.js"
+  },
+  "bin": {
+    "cultsim-tooltip": "./main.js"
   },
   "author": "Mihael Stormrage",
   "license": "MIT",
