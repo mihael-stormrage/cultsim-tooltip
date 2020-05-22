@@ -153,3 +153,4 @@ test.js
 .vscode
 .eslintrc.json
 package-lock.json
+.travis.yml

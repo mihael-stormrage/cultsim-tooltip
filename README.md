@@ -2,6 +2,7 @@
 
 ![platform]
 [![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
 [![Dependency Status][david-badge]][david-url]
 
 Cultist Simulator tooltip mod maker
@@ -30,6 +31,8 @@ export let locale = "ru"; //en, ru, zh
 
 [npm-badge]: https://badge.fury.io/js/cultsim-tooltip.svg
 [npm-url]: https://badge.fury.io/js/cultsim-tooltip
+[travis-badge]: https://api.travis-ci.org/mihael-stormrage/cultsim-tooltip.svg
+[travis-url]: https://travis-ci.org/mihael-stormrage/cultsim-tooltip
 [david-badge]: https://david-dm.org/mihael-stormrage/cultsim-tooltip.svg
 [david-url]: https://david-dm.org/mihael-stormrage/cultsim-tooltip
 [platform]: https://img.shields.io/badge/platform-windows-lightgrey
