@@ -5,19 +5,27 @@
 [![Build Status][travis-badge]][travis-url]
 [![Dependency Status][david-badge]][david-url]
 
-Cultist Simulator tooltip mod maker
+Cultist Simulator tooltip mod builder
+
+## Overview
+
+This utility parse [Cultist Simulator] gamefiles and build my tooltip mod.
+
+Currently supports books tooltip.
+
+## Requirements
+
+- [Node.js](https://nodejs.org)\
+Minimum: **13.x**\
+Recomended: **14.2** or later
 
 ## Install
-
-Install [Node.js](https://nodejs.org) 14.2 or later and then:
 
 ```sh
 npm i -g cultsim-tooltip
 ```
 
 ## Usage
-
-Run script by simply
 
 ```sh
 cultsim-tooltip
@@ -35,4 +43,5 @@ export let locale = "ru"; //en, ru, zh
 [travis-url]: https://travis-ci.org/mihael-stormrage/cultsim-tooltip
 [david-badge]: https://david-dm.org/mihael-stormrage/cultsim-tooltip.svg
 [david-url]: https://david-dm.org/mihael-stormrage/cultsim-tooltip
-[platform]: https://img.shields.io/badge/platform-windows-lightgrey
+[platform]: https://img.shields.io/badge/steam-windows-informational?logo=steam
+[Cultist Simulator]: https://store.steampowered.com/app/718670/Cultist_Simulator/
