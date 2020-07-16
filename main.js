@@ -6,12 +6,12 @@ import { file } from "./paths.js"
 import { mod } from "./mod.js"
 
 function forEachDescr(Descr, keyB) {
-  for (let keyD in Descr) {
-    let effect = books[keyB].effects;
-    let book = Object.keys(effect);
-    if (Descr[keyD].id.indexOf(book[0]) != -1) {
+  for (const keyD in Descr) {
+    const effect = books[keyB].effects;
+    const book = Object.keys(effect);
+    if (Descr[keyD].id.indexOf(book[0]) !== -1) {
       let aspects = [];
-      for (let key in effect)
+      for (const key in effect)
         aspectString(aspects, key);
       Descr[keyD].description += "\n\n" + aspects;
     }

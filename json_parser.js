@@ -19,20 +19,20 @@ function validate(buffer) {
 }
 
 export function propFilter(file, props, entityType) {
-  let json = getJSON(file);
+  const json = getJSON(file);
   let parsed;
   validate(json);
   parsed = jsonic(json);
 
-  for (let key in parsed[entityType])
+  for (const key in parsed[entityType])
     getProps(parsed[entityType], key);
   
   return parsed;
 
   function getProps(elem, key) {
-    let entry = {};
-    for (let prop in elem[key])
-      for (let pkey in props)
+    const entry = {};
+    for (const prop in elem[key])
+      for (const pkey in props)
         if (prop == props[pkey])
           entry[prop] = elem[key][prop];
     elem[key] = entry;

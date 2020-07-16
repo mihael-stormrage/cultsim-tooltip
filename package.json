@@ -21,6 +21,6 @@
   },
   "author": "Mihael Stormrage",
   "license": "MIT",
-  "description": "Cultist Simulator tooltip mod maker",
+  "description": "Cultist Simulator tooltip mod builder",
   "repository": "github:mihael-stormrage/cultsim-tooltip"
 }

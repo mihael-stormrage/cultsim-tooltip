@@ -1,24 +1,23 @@
 import { propFilter } from "./json_parser.js"
 import { files } from "./paths.js"
 
-let bookProps = ["effects"];
-let descrProps = ["id", "description"];
-let riteProps = ["id", "label"];
-let ableProps = ["id", "label"];
+const bookProps = ["effects"];
+const descrProps = ["id", "description"];
+const riteProps = ["id", "label"];
+const ableProps = ["id", "label"];
 
 export let locale = "ru"; //en, ru, zh
 let file = files(locale);
 
-export let books = propFilter(file.books, bookProps, "recipes").recipes;
-export let descr = propFilter(file.descr, descrProps, "elements");
-export let descrLang = propFilter(file.descrLang, descrProps, "elements");
-export let rites = propFilter(file.rites, riteProps, "elements");
-export let ables = propFilter(file.abilities, ableProps, "elements");
+export const books = propFilter(file.books, bookProps, "recipes").recipes;
+export const descr = propFilter(file.descr, descrProps, "elements");
+export const descrLang = propFilter(file.descrLang, descrProps, "elements");
+export const rites = propFilter(file.rites, riteProps, "elements");
+export const ables = propFilter(file.abilities, ableProps, "elements");
 
-function extend (obj, entityType)
-{
-  let ent = obj[entityType];
-  for (let item in ent)
+function extend (obj, entityType) {
+  const ent = obj[entityType];
+  for (const item in ent)
     ent[item].extends = [ent[item].id];
 }
 

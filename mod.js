@@ -1,10 +1,10 @@
 import fs from "fs-extra"
 import {locale} from "./filtered_data.js"
 
-let modName = "books-description-tooltip";
-let modPath = process.env["USERPROFILE"] + "\\AppData\\LocalLow\\Weather Factory\\Cultist Simulator\\mods\\" + modName;
+const modName = "books-description-tooltip";
+const modPath = "out/" + modName;
 
-let manifest = {
+const manifest = {
   name:"",
   author: "Mihael Stormrage",
   version: "1.0.0",
@@ -12,7 +12,7 @@ let manifest = {
   description_long: "TBD"
 }
 
-if (locale == "ru") {
+if (locale === "ru") {
   manifest.name = "Подсказка для книг";
   manifest.description = "Добавляет на книги информацию об аспектах.";
 }
@@ -21,9 +21,9 @@ else {
   manifest.description = "Now you can see aspects of the book on it.";
 }
 
-fs.outputJson(modPath + "\\manifest.json", manifest, {spaces: "\t"});
+fs.outputJson(modPath + "/manifest.json", manifest, {spaces: "\t"});
 
 export function mod(obj, filePath) {
-  let path = modPath + "\\content" + filePath;
+  const path = modPath + "/content" + filePath;
   fs.outputJsonSync(path, obj, {spaces: "\t"});
 }

@@ -3,8 +3,8 @@ import { fragments } from "./fragments.js"
 
 export function aspectString(aspects, key) {
 
-  for (let aspect in fragments)
-    for (let power in fragments[aspect])
+  for (const aspect in fragments)
+    for (const power in fragments[aspect])
       if (key == fragments[aspect][power])
         aspects.push(`<sprite name=${aspect}> ${(Number(power) + 1) * 2}`);
 
@@ -12,9 +12,9 @@ export function aspectString(aspects, key) {
   dict(rites);
 
   function dict(dictonary) {
-    for (let rkey in dictonary.elements)
+    for (const rkey in dictonary.elements)
       if (dictonary.elements[rkey].id == key) {
-        let string = ' ' + dictonary.elements[rkey].label.trim();
+        const string = ' ' + dictonary.elements[rkey].label.trim();
         if (key == "fascination" || key == "dread")
           aspects.push(`<b><i>${string}</i></b>`)
         else aspects.push(`<i>${string}</i>`);
