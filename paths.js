@@ -21,6 +21,8 @@ const getRecipes = (prop, filenameMask) =>
 getRecipes(file.vaults, "explore_vaults_");
 getRecipes(file.obstacles, "explore_obstacles_");
 
+
+
 export function files(locale) {
     const locales = {
       en: "/core",
@@ -28,11 +30,12 @@ export function files(locale) {
       zh: "/core_zh-hans"
     };
     const filePath = {
-      vaults: []
+      vaults: [],
+      obstacles: [],
     };
     for (const key in file)
-      if (key == "vaults") file[key].forEach(file => filePath[key].push(PATH + locales["en"] + file))
-      else if (key != "books" && key != "vault_locks")
+      if (key === "vaults" || key === "obstacles") file[key].forEach(file => filePath[key].push(PATH + locales["en"] + file))
+      else if (key !== "books" && key !== "vault_locks")
         filePath[key] = PATH + locales[locale] + file[key]
       else filePath[key] = PATH + locales["en"] + file[key];
     return filePath;
