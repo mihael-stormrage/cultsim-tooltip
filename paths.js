@@ -10,12 +10,16 @@ export const file = {
   abilities: "/elements/abilities.json",
 
   vaults: [],
+  obstacles: [],
   vault_locks: "/elements/vault_locks.json",
   vaultsDescr: "/elements/vaults.json",
 };
 
-fs.readdirSync(PATH + "/core" + "/recipes/").filter(file => file.includes("explore_vaults_"))
-  .forEach(it => file.vaults.push("/recipes/" + it));
+const getRecipes = (prop, filenameMask) =>
+  fs.readdirSync(PATH + "/core" + "/recipes/").filter(file => file.includes(filenameMask))
+    .forEach(it => prop.push("/recipes/" + it));
+getRecipes(file.vaults, "explore_vaults_");
+getRecipes(file.obstacles, "explore_obstacles_");
 
 export function files(locale) {
     const locales = {
