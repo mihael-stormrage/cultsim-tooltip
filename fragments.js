@@ -3,11 +3,8 @@ import { books } from "./filtered_data.js"
 let frag = [];
 let effects = [];
 
-for (const b in books)
-  effects.push(Object.keys(books[b].effects));
-
-for (const b in effects)
-  frag = effects[b].concat(frag);
+books.forEach(b => effects.push(Object.keys(b.effects)));
+effects.forEach(b => frag = b.concat(frag));
 
 frag = frag.filter(item => item.includes("fragment"));
 frag.sort();
@@ -27,12 +24,10 @@ export const fragments = {
 
 frag = Array.from(frag);
 
-const keys = Object.keys(fragments);
-
-for (const k in keys)
-  for (const fKey in frag)
-    if (frag[fKey].includes(keys[k]))
-      fragments[keys[k]].push(frag[fKey]);
+Object.keys(fragments).forEach(k => frag.forEach(fKey => {
+  if (fKey.includes(k))
+    fragments[k].push(fKey);
+}));
 
 // function DictXFilter(match, dict, callback) {
 //   const keysD = Object.keys(dict);

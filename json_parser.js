@@ -24,17 +24,18 @@ export function propFilter(file, props, entityType) {
   validate(json);
   parsed = jsonic(json);
 
-  for (const key in parsed[entityType])
-    getProps(parsed[entityType], key);
+  Object.keys(parsed[entityType]).forEach(key => getProps(parsed[entityType], key));
   
   return parsed;
 
   function getProps(elem, key) {
     const entry = {};
-    for (const prop in elem[key])
-      for (const pkey in props)
-        if (prop == props[pkey])
-          entry[prop] = elem[key][prop];
+
+    Object.keys(elem[key]).forEach(prop => props.forEach(pkey => {
+      if (prop === pkey)
+        entry[prop] = elem[key][prop];
+    }));
+
     elem[key] = entry;
   }
 }

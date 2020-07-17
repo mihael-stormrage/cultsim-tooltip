@@ -30,11 +30,7 @@ function getRecipes(recipeFiles, props, exclude) {
   return resultArr;
 }
 
-function extend(obj, entityType) {
-  const ent = obj[entityType];
-  for (const item in ent)
-    ent[item].extends = [ent[item].id];
-}
+const extend = (obj, entityType) => obj[entityType].forEach(item => item.extends = [item.id]);
 
 extend(descr, "elements");
 extend(descrLang, "elements");
