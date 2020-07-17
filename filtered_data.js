@@ -16,10 +16,11 @@ export const descrLang = propFilter(file.descrLang, descrProps, "elements");
 export const rites = propFilter(file.rites, riteProps, "elements");
 export const ables = propFilter(file.abilities, ableProps, "elements");
 
-export let vaults;
-// file.vaults.forEach(vaultsFile =>
-//   vaults += propFilter(vaultsFile, vaultProps, "recipes").recipes
-// );
+export let vaults = [];
+file.vaults.forEach(vaultsFile =>
+  vaults = vaults.concat(propFilter(vaultsFile, vaultProps, "recipes").recipes
+    .filter(it => it.id.includes("_setup"))
+));
 
 function extend (obj, entityType) {
   const ent = obj[entityType];

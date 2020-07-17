@@ -23,9 +23,12 @@ export function files(locale) {
       ru: "/core_ru",
       zh: "/core_zh-hans"
     };
-    const filePath = {};
+    const filePath = {
+      vaults: []
+    };
     for (const key in file)
-      if (key != "books" && key != "vault_locks")
+      if (key == "vaults") file[key].forEach(file => filePath[key].push(PATH + locales["en"] + file))
+      else if (key != "books" && key != "vault_locks")
         filePath[key] = PATH + locales[locale] + file[key]
       else filePath[key] = PATH + locales["en"] + file[key];
     return filePath;
