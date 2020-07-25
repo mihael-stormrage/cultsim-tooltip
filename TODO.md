@@ -1,6 +1,9 @@
 # TODO
 
 - [ ] Vaults tooltip
+    - modify aspectsString
+        - output w/o number if n = 1
+        - aspects list to Set
 - [ ] Hunters potential tooltip
 <br><br>
 - [ ] Handle duplicate keys
