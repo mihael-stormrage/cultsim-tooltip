@@ -1,18 +1,29 @@
 #!/usr/bin/env node
 
 import { aspectString } from "./aspects_string.js"
-import { books, descr, descrLang } from "./filtered_data.js"
+import { books, descr, descrLang, vaultsDescr, vaults, obstacles } from "./filtered_data.js"
 import { file } from "./paths.js"
 import { mod } from "./mod.js"
 
-function forEachDescr(Descr, keyB) {
+function forEachDescr(Descr, key, isVault = false) {
   Descr.forEach(keyD => {
-    const effect = keyB.effects;
-    const book = Object.keys(effect);
-    if (keyD.id.indexOf(book[0]) !== -1) {
-      let aspects = [];
-      Object.keys(effect).forEach(key => aspectString(aspects, key));
-      keyD.description += "\n\n" + aspects;
+    const item = Object.keys(key.requirements).filter(it => it !== "funds" && it !== "follower")[0];
+    if (keyD.id.indexOf(item) !== -1) {
+      let aspects = new Set();
+      Object.keys(key.effects).forEach(effect => {
+        if (isVault) {
+          obstacles.forEach(obs => {
+            const obstacle = Object.keys(obs.requirements)[0];
+            if (obstacle === effect) {
+              obs.alternativerecipes.forEach(it => {
+                aspectString(aspects, it.id, false);
+              })
+            }
+          });
+        }
+        else aspectString(aspects, effect);
+      });
+      keyD.description += "\n\n" + Array.from(aspects);
     }
   });
 }
@@ -22,5 +33,8 @@ books.forEach(keyB => {
   forEachDescr(descrLang.elements, keyB);
 });
 
+vaults.forEach(keyVault => forEachDescr(vaultsDescr.elements, keyVault, true));
+
 mod(descr, file.descr);
 mod(descrLang, file.descrLang);
+mod(vaultsDescr, file.vaultsDescr);

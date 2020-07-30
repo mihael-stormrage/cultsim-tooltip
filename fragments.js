@@ -22,8 +22,6 @@ export const fragments = {
   winter: [],
 };
 
-frag = Array.from(frag);
-
 Object.keys(fragments).forEach(k => frag.forEach(fKey => {
   if (fKey.includes(k))
     fragments[k].push(fKey);

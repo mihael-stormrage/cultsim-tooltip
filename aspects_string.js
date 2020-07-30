@@ -1,12 +1,18 @@
 import { rites, ables } from "./filtered_data.js"
 import { fragments } from "./fragments.js"
 
-export function aspectString(aspects, key) {
+export function aspectString(aspects, key, usePower = true) {
 
-  Object.keys(fragments).forEach(aspect => Object.keys(aspect).forEach(power => {
-    if (key === fragments[aspect][power])
-      aspects.push(`<sprite name=${aspect}> ${(Number(power) + 1) * 2}`);
-  }));
+  if (usePower)
+    Object.keys(fragments).forEach(aspect => Object.keys(aspect).forEach(power => {
+      if (key === fragments[aspect][power])
+        aspects.add(`<sprite name=${aspect}> ${(Number(power) + 1) * 2}`);
+    }))
+  else
+    Object.keys(fragments).forEach(aspect => {
+      if (key.includes(aspect))
+        aspects.add(`<sprite name=${aspect}>`);
+    });
 
   dict(ables);
   dict(rites);
@@ -16,8 +22,8 @@ export function aspectString(aspects, key) {
       if (rkey.id === key) {
         const string = ' ' + rkey.label.trim();
         if (key === "fascination" || key === "dread")
-          aspects.push(`<b><i>${string}</i></b>`)
-        else aspects.push(`<i>${string}</i>`);
+          aspects.add(`<b><i>${string}</i></b>`)
+        else aspects.add(`<i>${string}</i>`);
       }
     });
   }

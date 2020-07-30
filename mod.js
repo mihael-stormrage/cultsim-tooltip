@@ -1,24 +1,24 @@
 import fs from "fs-extra"
 import {locale} from "./filtered_data.js"
 
-const modName = "books-description-tooltip";
+const modName = "cultsim-tooltip";
 const modPath = "out/" + modName;
 
 const manifest = {
   name:"",
   author: "Mihael Stormrage",
-  version: "1.0.0",
+  version: "2.0.0",
   description: "",
   description_long: "TBD"
 }
 
 if (locale === "ru") {
-  manifest.name = "Подсказка для книг";
-  manifest.description = "Добавляет на книги информацию об аспектах.";
+  manifest.name = "Подсказка для книг и экспедиций";
+  manifest.description = "Добавляет на книги и экспедиции информацию об аспектах.";
 }
 else {
-  manifest.name = "Book tooltip";
-  manifest.description = "Now you can see aspects of the book on it.";
+  manifest.name = "Books & Vaults tooltip";
+  manifest.description = "Now you can see aspects of the book on it and which aspects you'll need in vault.";
 }
 
 fs.outputJson(modPath + "/manifest.json", manifest, {spaces: "\t"});
