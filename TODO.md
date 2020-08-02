@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Vaults tooltip
+- [x] Vaults tooltip
     - modify aspectsString
         - output w/o number if n = 1
         - aspects list to Set

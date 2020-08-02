@@ -9,7 +9,7 @@ const vaultProps = ["id", "requirements", "effects"];
 const obstacleProps = ["id", "requirements", "alternativerecipes"];
 const vault_locksProps = ["id", "label"];
 
-export const locale = "ru"; //en, ru, zh
+export const locale = "en"; //en, ru, zh
 const file = files(locale);
 
 export const books = propFilter(file.books, bookProps, "recipes").recipes;
