@@ -9,4 +9,3 @@ before_install:
   - "npm config set spin false"
 before_script:
   - "npm install eslint"
-script: npm start
