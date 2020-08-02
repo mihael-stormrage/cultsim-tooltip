@@ -35,7 +35,7 @@ export function files(locale) {
     };
     for (const key in file)
       if (key === "vaults" || key === "obstacles") file[key].forEach(file => filePath[key].push(PATH + locales["en"] + file))
-      else if (key !== "books" && key !== "vault_locks")
+      else if (key !== "books")
         filePath[key] = PATH + locales[locale] + file[key]
       else filePath[key] = PATH + locales["en"] + file[key];
     return filePath;

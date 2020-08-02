@@ -7,7 +7,7 @@ const modPath = "out/" + modName;
 const manifest = {
   name:"",
   author: "Mihael Stormrage",
-  version: "2.0.1",
+  version: "2.1.0",
   description: "",
   description_long: "TBD"
 }
@@ -18,7 +18,7 @@ if (locale === "ru") {
 }
 else {
   manifest.name = "Books & Vaults tooltip";
-  manifest.description = "Now you can see aspects of the book on it and which aspects you'll need in vault.";
+  manifest.description = "Now you can see books effects and obstacles in vaults.";
 }
 
 fs.outputJson(modPath + "/manifest.json", manifest, {spaces: "\t"});

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { aspectString } from "./aspects_string.js"
-import { books, descr, descrLang, vaultsDescr, vaults, obstacles } from "./filtered_data.js"
+import { aspectString, dict } from "./aspects_string.js"
+import { books, descr, descrLang, vaultsDescr, vaults, obstacles, vault_locks } from "./filtered_data.js"
 import { file } from "./paths.js"
 import { mod } from "./mod.js"
 
@@ -14,16 +14,18 @@ function forEachDescr(Descr, key, isVault = false) {
 
       Object.keys(key.effects).forEach(effect => {
         if (isVault) {
+
           obstacles.forEach(obs => {
             const obstacle = Object.keys(obs.requirements)[0];
             if (obstacle === effect) {
               obs.alternativerecipes.forEach(it => {
                 aspectString(aspects, it.id, false);
               });
-              keyD.description += "\n" + Array.from(aspects);
-              aspects.clear()
+              keyD.description += `\n${Array.from(aspects)}  ->${dict(vault_locks, obstacle)}`;
+              aspects.clear();
             }
           });
+
         }
         else aspectString(aspects, effect);
       });

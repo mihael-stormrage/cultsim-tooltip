@@ -14,17 +14,20 @@ export function aspectString(aspects, key, usePower = true) {
         aspects.add(`<sprite name=${aspect}>`);
     });
 
-  dict(ables);
-  dict(rites);
+  dict(ables, key, aspects);
+  dict(rites, key, aspects);
+}
 
-  function dict(dictonary) {
-    dictonary.elements.forEach(rkey => {
-      if (rkey.id === key) {
-        const string = ' ' + rkey.label.trim();
-        if (key === "fascination" || key === "dread")
-          aspects.add(`<b><i>${string}</i></b>`)
-        else aspects.add(`<i>${string}</i>`);
-      }
-    });
-  }
+export function dict(dictonary, key, aspectsLine = new Set()) {
+  let string;
+  dictonary.elements.forEach(rkey => {
+    if (rkey.id === key) {
+      string = rkey.label.trim();
+      if (key === "fascination" || key === "dread" || key.startsWith("curse_"))
+        string = ` <b><i>${string}</i></b>`;
+      else string = ` <i>${string}</i>`;
+      aspectsLine.add(string);
+    }
+  });
+  return string;
 }
