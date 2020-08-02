@@ -1,7 +1,7 @@
 {
   "name": "cultsim-tooltip",
   "type": "module",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "main": "main.js",
   "dependencies": {
     "fs-extra": "^9.0.0",

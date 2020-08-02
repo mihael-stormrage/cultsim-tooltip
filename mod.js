@@ -7,7 +7,7 @@ const modPath = "out/" + modName;
 const manifest = {
   name:"",
   author: "Mihael Stormrage",
-  version: "2.0.0",
+  version: "2.0.1",
   description: "",
   description_long: "TBD"
 }

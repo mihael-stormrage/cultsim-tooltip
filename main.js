@@ -10,6 +10,8 @@ function forEachDescr(Descr, key, isVault = false) {
     const item = Object.keys(key.requirements).filter(it => it !== "funds" && it !== "follower")[0];
     if (keyD.id.indexOf(item) !== -1) {
       let aspects = new Set();
+      keyD.description += "\n";
+
       Object.keys(key.effects).forEach(effect => {
         if (isVault) {
           obstacles.forEach(obs => {
@@ -17,13 +19,16 @@ function forEachDescr(Descr, key, isVault = false) {
             if (obstacle === effect) {
               obs.alternativerecipes.forEach(it => {
                 aspectString(aspects, it.id, false);
-              })
+              });
+              keyD.description += "\n" + Array.from(aspects);
+              aspects.clear()
             }
           });
         }
         else aspectString(aspects, effect);
       });
-      keyD.description += "\n\n" + Array.from(aspects);
+
+      if (!isVault) keyD.description += "\n" + Array.from(aspects);
     }
   });
 }
