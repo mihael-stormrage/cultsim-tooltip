@@ -4,8 +4,8 @@ import { fragments } from "./fragments.js"
 export function aspectString(aspects, key, usePower = true) {
 
   if (usePower)
-    Object.keys(fragments).forEach(aspect => Object.keys(aspect).forEach(power => {
-      if (key === fragments[aspect][power])
+    Object.keys(fragments).forEach(aspect => fragments[aspect].forEach((fragment, power) => {
+      if (key === fragment)
         aspects.add(`<sprite name=${aspect}> ${(Number(power) + 1) * 2}`);
     }))
   else
