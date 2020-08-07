@@ -2,8 +2,11 @@
 
 import { aspectString, dict } from "./aspects_string.js"
 import { books, descr, descrLang, vaultsDescr, vaults, obstacles, vault_locks } from "./filtered_data.js"
-import { file } from "./paths.js"
+import { files, file, locales } from "./paths.js"
 import { mod } from "./mod.js"
+
+export let loc = Object.keys(locales)[0];
+export let locfiles = files(loc);
 
 function forEachDescr(Descr, key, isVault = false) {
   Descr.forEach(keyD => {
@@ -35,13 +38,17 @@ function forEachDescr(Descr, key, isVault = false) {
   });
 }
 
-books.forEach(keyB => {
-  forEachDescr(descr.elements, keyB);
-  forEachDescr(descrLang.elements, keyB);
+Object.values(locales).forEach(([currLoc, locDir]) => {
+  loc = currLoc;
+
+  books.forEach(keyB => {
+    forEachDescr(descr.elements, keyB);
+    forEachDescr(descrLang.elements, keyB);
+  });
+
+  vaults.forEach(keyVault => forEachDescr(vaultsDescr.elements, keyVault, true));
+
+  mod(descr, file.descr, locDir);
+  mod(descrLang, file.descrLang, locDir);
+  mod(vaultsDescr, file.vaultsDescr, locDir);
 });
-
-vaults.forEach(keyVault => forEachDescr(vaultsDescr.elements, keyVault, true));
-
-mod(descr, file.descr);
-mod(descrLang, file.descrLang);
-mod(vaultsDescr, file.vaultsDescr);

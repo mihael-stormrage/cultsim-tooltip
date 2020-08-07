@@ -21,14 +21,13 @@ const getRecipes = (prop, filenameMask) =>
 getRecipes(file.vaults, "explore_vaults_");
 getRecipes(file.obstacles, "explore_obstacles_");
 
-
+export const locales = {
+  en: "/core",
+  ru: "/core_ru",
+  zh: "/core_zh-hans"
+};
 
 export function files(locale) {
-    const locales = {
-      en: "/core",
-      ru: "/core_ru",
-      zh: "/core_zh-hans"
-    };
     const filePath = {
       vaults: [],
       obstacles: [],
