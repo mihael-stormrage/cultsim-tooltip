@@ -18,7 +18,7 @@ function forEachDescr(Descr, key, isVault = false) {
           obstacles.forEach(obs => {
             const obstacle = Object.keys(obs.requirements)[0];
             if (obstacle === effect) {
-              obs.alternativerecipes.forEach(it => {
+              obs.alt.forEach(it => {
                 aspectString(aspects, it.id, false);
               });
               keyD.description += `\n${Array.from(aspects)}  ->${dict(vault_locks, obstacle)}`;

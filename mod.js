@@ -7,7 +7,7 @@ const modPath = "out/" + modName;
 const manifest = {
   name:"",
   author: "Mihael Stormrage",
-  version: "2.1.1",
+  version: "3.0.0",
   description: "",
   description_long: "TBD"
 }
@@ -21,7 +21,7 @@ else {
   manifest.description = "Now you can see books effects and obstacles in vaults.";
 }
 
-fs.outputJson(modPath + "/manifest.json", manifest, {spaces: "\t"});
+fs.outputJson(modPath + "/synopsis.json", manifest, {spaces: "\t"});
 
 export function mod(obj, filePath) {
   const path = modPath + "/content" + filePath;

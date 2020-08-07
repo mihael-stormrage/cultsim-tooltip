@@ -6,7 +6,7 @@ const descrProps = ["id", "description"];
 const riteProps = ["id", "label"];
 const ableProps = ["id", "label"];
 const vaultProps = ["id", "requirements", "effects"];
-const obstacleProps = ["id", "requirements", "alternativerecipes"];
+const obstacleProps = ["id", "requirements", "alt"];
 const vault_locksProps = ["id", "label"];
 
 export const locale = "en"; //en, ru, zh
