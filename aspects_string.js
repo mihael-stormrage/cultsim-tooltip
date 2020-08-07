@@ -1,7 +1,8 @@
-import { rites, ables } from "./filtered_data.js"
-import { fragments } from "./fragments.js"
+import { rites, ables, books } from "./main.js";
+import getFragments from "./fragments.js";
 
 export function aspectString(aspects, key, usePower = true) {
+  const fragments = getFragments(books);
 
   if (usePower)
     Object.keys(fragments).forEach(aspect => fragments[aspect].forEach((fragment, power) => {

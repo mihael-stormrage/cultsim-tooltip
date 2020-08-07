@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { aspectString, dict } from "./aspects_string.js"
-import { books, descr, descrLang, vaultsDescr, vaults, obstacles, vault_locks } from "./filtered_data.js"
-import { files, file, locales } from "./paths.js"
-import { mod } from "./mod.js"
+import { aspectString, dict } from "./aspects_string.js";
+import { getObjects } from "./filtered_data.js";
+import { files, file, locales } from "./paths.js";
+import { mod } from "./mod.js";
 
-export let loc = Object.keys(locales)[0];
-export let locfiles = files(loc);
+export let {books, descr, descrLang, vaultsDescr, vaults, obstacles, vault_locks, rites, ables} =
+  getObjects(files(Object.keys(locales)[0]));
 
 function forEachDescr(Descr, key, isVault = false) {
   Descr.forEach(keyD => {
@@ -38,8 +38,16 @@ function forEachDescr(Descr, key, isVault = false) {
   });
 }
 
-Object.values(locales).forEach(([currLoc, locDir]) => {
-  loc = currLoc;
+const extend = (obj, entityType) => obj[entityType].forEach(item => item.extends = [item.id]);
+
+Object.entries(locales).forEach(([loc, locDir]) => {
+  const obj = getObjects(files(loc));
+  descr = obj.descr;
+  descrLang = obj.descrLang;
+  vault_locks = obj.vaultsDescr;
+  vault_locks = obj.vault_locks;
+  rites = obj.rites;
+  ables = obj.ables;
 
   books.forEach(keyB => {
     forEachDescr(descr.elements, keyB);
@@ -47,6 +55,10 @@ Object.values(locales).forEach(([currLoc, locDir]) => {
   });
 
   vaults.forEach(keyVault => forEachDescr(vaultsDescr.elements, keyVault, true));
+
+  extend(descr, "elements");
+  extend(descrLang, "elements");
+  extend(vaultsDescr, "elements")
 
   mod(descr, file.descr, locDir);
   mod(descrLang, file.descrLang, locDir);

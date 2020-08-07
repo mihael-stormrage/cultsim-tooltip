@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 
 const modName = "cultsim-tooltip";
-const modPath = "out" + modName;
+const modPath = "out/" + modName;
 
 const manifest = {
   name:"",

@@ -1,31 +1,33 @@
-import { books } from "./filtered_data.js"
+export default function getFragments(books) {
+  let frag = [];
+  let effects = [];
 
-let frag = [];
-let effects = [];
+  books.forEach(b => effects.push(Object.keys(b.effects)));
+  effects.forEach(b => frag = b.concat(frag));
 
-books.forEach(b => effects.push(Object.keys(b.effects)));
-effects.forEach(b => frag = b.concat(frag));
+  frag = frag.filter(item => item.includes("fragment"));
+  frag.sort();
+  frag = new Set(frag);
 
-frag = frag.filter(item => item.includes("fragment"));
-frag.sort();
-frag = new Set(frag);
+  const fragments = {
+    edge: [],
+    forge: [],
+    grail: [],
+    heart: [],
+    knock: [],
+    lantern: [],
+    moth: [],
+    secrethistories: [],
+    winter: [],
+  };
 
-export const fragments = {
-  edge: [],
-  forge: [],
-  grail: [],
-  heart: [],
-  knock: [],
-  lantern: [],
-  moth: [],
-  secrethistories: [],
-  winter: [],
-};
+  Object.keys(fragments).forEach(k => frag.forEach(fKey => {
+    if (fKey.includes(k))
+      fragments[k].push(fKey);
+  }));
 
-Object.keys(fragments).forEach(k => frag.forEach(fKey => {
-  if (fKey.includes(k))
-    fragments[k].push(fKey);
-}));
+  return fragments;
+}
 
 // function DictXFilter(match, dict, callback) {
 //   const keysD = Object.keys(dict);
