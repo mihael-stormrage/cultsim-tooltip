@@ -6,7 +6,7 @@ const modPath = "out/" + modName;
 const manifest = {
   name:"",
   author: "Mihael Stormrage",
-  version: "3.0.0",
+  version: "3.1.0",
   description: "",
   description_long: "TBD"
 }
@@ -21,8 +21,10 @@ const manifest = {
 // }
 
 fs.outputJson(modPath + "/synopsis.json", manifest, {spaces: "\t"});
+fs.mkdirp(modPath + "/content");
 
 export function mod(obj, filePath, locDir) {
-    const path = modPath + "/content" + locDir + filePath;
-    fs.outputJsonSync(path, obj, {spaces: "\t"});
+  if (locDir === "/core") locDir = "/loc_en";
+  const path = modPath + "/loc" + locDir + filePath;
+  fs.outputJsonSync(path, obj, {spaces: "\t"});
 }
