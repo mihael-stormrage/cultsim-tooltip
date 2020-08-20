@@ -2,7 +2,12 @@ import fs from "fs"
 import jsonic from "jsonic"
 
 function getJSON(file) {
-  return fs.readFileSync(file, "utf8").trim();
+  let output = fs.readFileSync(file, "utf8").trim();
+  if (output.endsWith(";"))
+    output = output.slice(0, -1);
+  output = output.replace(/(?<!")\btrue\w+/g, `"$&"`);
+  output = output.replace(/\s+/g,' ');
+  return output;
 }
 
 function validate(buffer) {
